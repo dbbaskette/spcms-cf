@@ -1,0 +1,16 @@
+applications:
+- name: petclinic
+  memory: 2G
+  instances: 1
+  stack: cflinuxfs3
+  services:
+    - config-server
+    - service-registry
+    - circuit-breaker
+    - sso
+  env:
+    SKIP_SSL_VALIDATION: "true"
+    GRANT_TYPE: authorization_code
+    SSO_IDENTITY_PROVIDERS: uaa
+    SSO_REDIRECT_URIS: http://petclinic.<DOMAIN>/login
+    SSO_SCOPES: openid
